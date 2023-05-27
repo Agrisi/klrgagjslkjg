@@ -84,11 +84,11 @@ CREATE TABLE lojas.estoques (
                 quantidade NUMERIC(38) NOT NULL,
                 CONSTRAINT estoque_id PRIMARY KEY (estoque_id)
 );
-COMMENT ON TABLE  lojas.estoque            IS 'Tabela que contém as informações dos estoques das lojas.';
-COMMENT ON COLUMN lojas.estoque.estoque_id IS 'Coluna com as identificações de cada estoque.';
-COMMENT ON COLUMN lojas.estoque.loja_id    IS 'Coluna com o número de identificação das lojas.';
-COMMENT ON COLUMN lojas.estoque.produto_id IS 'Coluna que contém a identificação dos produtos.';
-COMMENT ON COLUMN lojas.estoque.quantidade IS 'Coluna que contém a quantidade de produtos que cada estoque tem.';
+COMMENT ON TABLE  lojas.estoques            IS 'Tabela que contém as informações dos estoques das lojas.';
+COMMENT ON COLUMN lojas.estoques.estoque_id IS 'Coluna com as identificações de cada estoque.';
+COMMENT ON COLUMN lojas.estoques.loja_id    IS 'Coluna com o número de identificação das lojas.';
+COMMENT ON COLUMN lojas.estoques.produto_id IS 'Coluna que contém a identificação dos produtos.';
+COMMENT ON COLUMN lojas.estoques.quantidade IS 'Coluna que contém a quantidade de produtos que cada estoque tem.';
 
 
 CREATE TABLE lojas.clientes (
