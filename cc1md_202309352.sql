@@ -158,65 +158,65 @@ COMMENT ON COLUMN lojas.pedidos_itens.preco_unitario  IS 'Coluna que contém o p
 COMMENT ON COLUMN lojas.pedidos_itens.quantidade      IS 'Coluna que contém a quantidade dos itens pedidos.';
 
 
+ALTER TABLE lojas.estoques ADD CONSTRAINT produtos_estoques_fk
+FOREIGN KEY (produto_id)
+REFERENCES lojas.produtos (produto_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
 ALTER TABLE lojas.pedidos_itens ADD CONSTRAINT produtos_pedidos_itens_fk
 FOREIGN KEY (produto_id)
-REFERENCES produtos (produto_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
-ALTER TABLE lojas.estoque ADD CONSTRAINT produtos_estoque_fk
-FOREIGN KEY (produto_id)
-REFERENCES produtos (produto_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
-ALTER TABLE lojas.pedidos ADD CONSTRAINT lojas_pedidos_fk
-FOREIGN KEY (loja_id)
-REFERENCES lojas (loja_id)
+REFERENCES lojas.produtos (produto_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE lojas.envios ADD CONSTRAINT lojas_envios_fk
 FOREIGN KEY (loja_id)
-REFERENCES lojas (loja_id)
+REFERENCES lojas.lojas (loja_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE lojas.estoque ADD CONSTRAINT lojas_estoque_fk
+ALTER TABLE lojas.estoques ADD CONSTRAINT lojas_estoques_fk
 FOREIGN KEY (loja_id)
-REFERENCES lojas (loja_id)
+REFERENCES lojas.lojas (loja_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE lojas.pedidos ADD CONSTRAINT clientes_pedidos_fk
-FOREIGN KEY (cliente_id)
-REFERENCES clientes (cliente_id)
+ALTER TABLE lojas.pedidos ADD CONSTRAINT lojas_pedidos_fk
+FOREIGN KEY (loja_id)
+REFERENCES lojas.lojas (loja_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE lojas.envios ADD CONSTRAINT clientes_envios_fk
 FOREIGN KEY (cliente_id)
-REFERENCES clientes (cliente_id)
+REFERENCES lojas.clientes (cliente_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE lojas.pedidos_itens ADD CONSTRAINT envios_pedidos_itens_fk
-FOREIGN KEY (envio_id)
-REFERENCES envios (envio_id)
+ALTER TABLE lojas.pedidos ADD CONSTRAINT clientes_pedidos_fk
+FOREIGN KEY (cliente_id)
+REFERENCES lojas.clientes (cliente_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE lojas.pedidos_itens ADD CONSTRAINT pedidos_pedidos_itens_fk
 FOREIGN KEY (pedido_id)
-REFERENCES pedidos (pedido_id)
+REFERENCES lojas.pedidos (pedido_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE lojas.pedidos_itens ADD CONSTRAINT envios_pedidos_itens_fk
+FOREIGN KEY (envio_id)
+REFERENCES lojas.envios (envio_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
