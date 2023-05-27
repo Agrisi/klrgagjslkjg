@@ -60,7 +60,7 @@ CREATE TABLE lojas.lojas (
                 logo_arquivo    VARCHAR(512),
                 logo_charset    VARCHAR(512),
                 logo_ultima_atualizacao DATE,
-                CONSTRAINT loja_id PRIMARY KEY (loja_id)
+                CONSTRAINT loja_id PRIMARY KEY (loja_id),
                 CONSTRAINT apenas_um_endereco CHECK (COALESCE(endereco_web, endereco_fisico) IS NOT NULL)
 );
 COMMENT ON TABLE  lojas.lojas                          IS 'Tabela que contém as informações das lojas.';
@@ -115,7 +115,7 @@ CREATE TABLE lojas.envios (
                 cliente_id       NUMERIC(38) NOT NULL,
                 endereco_entrega VARCHAR(512) NOT NULL,
                 status           VARCHAR(15) NOT NULL,
-                CONSTRAINT envio_id PRIMARY KEY (envio_id)
+                CONSTRAINT envio_id PRIMARY KEY (envio_id),
                 CONSTRAINT status_lojas.envios CHECK(status IN ('FEITO', 
                                                           'ENVIADO',
                                                           'EM TRANSITO',
@@ -135,7 +135,7 @@ CREATE TABLE lojas.pedidos (
                 cliente_id NUMERIC(38) NOT NULL,
                 status     VARCHAR(15) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
-                CONSTRAINT pedido_id PRIMARY KEY (pedido_id)
+                CONSTRAINT pedido_id PRIMARY KEY (pedido_id),
                 CONSTRAINT status_lojas.pedidos CHECK (status IN ('CANCELADO', 
                                                             'COMPLETO',
                                                             'ABERTO',
