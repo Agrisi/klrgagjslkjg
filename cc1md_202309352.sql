@@ -116,10 +116,7 @@ CREATE TABLE lojas.envios (
                 endereco_entrega VARCHAR(512) NOT NULL,
                 status           VARCHAR(15) NOT NULL,
                 CONSTRAINT envio_id PRIMARY KEY (envio_id),
-                CONSTRAINT status_envios CHECK(status IN ('FEITO', 
-                                                          'ENVIADO',
-                                                          'EM TRANSITO',
-                                                          'ENTREGUE'))
+                CONSTRAINT status_envios CHECK (status IN ('CRIADO', 'ENVIADO', 'TRANSITO', 'ENTREGUE'))
 );
 COMMENT ON TABLE  lojas.envios                  IS 'Tabela que contém as informações dos envios dos produtos da loja.';
 COMMENT ON COLUMN lojas.envios.envio_id         IS 'Coluna que contém a identificação dos envios que a loja fez.';
@@ -136,12 +133,7 @@ CREATE TABLE lojas.pedidos (
                 status     VARCHAR(15) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
                 CONSTRAINT pedido_id PRIMARY KEY (pedido_id),
-                CONSTRAINT status_pedidos CHECK (status IN ('CANCELADO', 
-                                                            'COMPLETO',
-                                                            'ABERTO',
-                                                            'PAGO',
-                                                            'REEMBOLSADO',
-                                                            'ENVIADO'))
+                CONSTRAINT status_pedidos CHECK (status IN ('CANCELADO', 'COMPLETO', 'ABERTO', 'PAGO', 'REEMBOLSADO', 'ENVIADO'))
 );
 COMMENT ON TABLE  lojas.pedidos            IS 'Tabela que mostra os pedidos que foram feitos.';
 COMMENT ON COLUMN lojas.pedidos.pedido_id  IS 'Coluna que mostra as identificações dos pedidos feitos.';
