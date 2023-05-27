@@ -77,7 +77,7 @@ COMMENT ON COLUMN lojas.lojas.logo_charset             IS 'Coluna que mostra o c
 COMMENT ON COLUMN lojas.lojas.logo_ultima_atualizacao  IS 'Coluna que contém a data da ultima atualização de cada logo.';
 
 
-CREATE TABLE lojas.estoque (
+CREATE TABLE lojas.estoques (
                 estoque_id NUMERIC(38) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
                 produto_id NUMERIC(38) NOT NULL,
