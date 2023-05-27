@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS uvv;
 
-DROP SCHEMA lojas CASCADE;
+DROP SCHEMA IF EXISTS lojas CASCADE;
 
 DROP USER IF EXISTS caua;
 
@@ -34,7 +34,7 @@ CREATE TABLE    lojas.produtos (
                 imagem_arquivo   VARCHAR(512),
                 imagem_charset   VARCHAR(512),
                 imagem_ultima_atualizacao DATE,
-                CONSTRAINT produtos_pk PRIMARY KEY (produto_id)
+                CONSTRAINT produto_id PRIMARY KEY (produto_id)
 );
 COMMENT ON TABLE  lojas.produtos                           IS 'Tabela que contém as informações dos produtos.';
 COMMENT ON COLUMN lojas.produtos.produto_id                IS 'Coluna que contém a identificação dos produtos.';
@@ -60,7 +60,7 @@ CREATE TABLE lojas.lojas (
                 logo_arquivo    VARCHAR(512),
                 logo_charset    VARCHAR(512),
                 logo_ultima_atualizacao DATE,
-                CONSTRAINT lojas_pk PRIMARY KEY (loja_id)
+                CONSTRAINT loja_id PRIMARY KEY (loja_id)
                 CONSTRAINT apenas_um_endereco CHECK (COALESCE(endereco_web, endereco_fisico) IS NOT NULL)
 );
 COMMENT ON TABLE  lojas.lojas                          IS 'Tabela que contém as informações das lojas.';
@@ -82,7 +82,7 @@ CREATE TABLE lojas.estoque (
                 loja_id    NUMERIC(38) NOT NULL,
                 produto_id NUMERIC(38) NOT NULL,
                 quantidade NUMERIC(38) NOT NULL,
-                CONSTRAINT estoque_pk PRIMARY KEY (estoque_id)
+                CONSTRAINT estoque_id PRIMARY KEY (estoque_id)
 );
 COMMENT ON TABLE  lojas.estoque            IS 'Tabela que contém as informações dos estoques das lojas.';
 COMMENT ON COLUMN lojas.estoque.estoque_id IS 'Coluna com as identificações de cada estoque.';
@@ -98,7 +98,7 @@ CREATE TABLE lojas.clientes (
                 telefone1  VARCHAR(20),
                 telefone2  VARCHAR(20),
                 telefone3  VARCHAR(20),
-                CONSTRAINT clientes_pk PRIMARY KEY (cliente_id)
+                CONSTRAINT cliente_id PRIMARY KEY (cliente_id)
 );
 COMMENT ON TABLE  lojas.clientes            IS 'Tabela que mostra informações sobre os clientes.';
 COMMENT ON COLUMN lojas.clientes.cliente_id IS 'Coluna com o número de identificação do cliente.';
@@ -115,8 +115,8 @@ CREATE TABLE lojas.envios (
                 cliente_id       NUMERIC(38) NOT NULL,
                 endereco_entrega VARCHAR(512) NOT NULL,
                 status           VARCHAR(15) NOT NULL,
-                CONSTRAINT envios_pk PRIMARY KEY (envio_id)
-                CONSTRAINT status_envios CHECK(status IN ('FEITO', 
+                CONSTRAINT envio_id PRIMARY KEY (envio_id)
+                CONSTRAINT status_lojas.envios CHECK(status IN ('FEITO', 
                                                           'ENVIADO',
                                                           'EM TRANSITO',
                                                           'ENTREGUE'))
@@ -135,8 +135,8 @@ CREATE TABLE lojas.pedidos (
                 cliente_id NUMERIC(38) NOT NULL,
                 status     VARCHAR(15) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
-                CONSTRAINT pedidos_pk PRIMARY KEY (pedido_id)
-                CONSTRAINT status_pedidos CHECK (status IN ('CANCELADO', 
+                CONSTRAINT pedido_id PRIMARY KEY (pedido_id)
+                CONSTRAINT status_lojas.pedidos CHECK (status IN ('CANCELADO', 
                                                             'COMPLETO',
                                                             'ABERTO',
                                                             'PAGO',
