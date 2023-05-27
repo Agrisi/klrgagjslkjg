@@ -116,7 +116,7 @@ CREATE TABLE lojas.envios (
                 endereco_entrega VARCHAR(512) NOT NULL,
                 status           VARCHAR(15) NOT NULL,
                 CONSTRAINT envio_id PRIMARY KEY (envio_id),
-                CONSTRAINT status_lojas.envios CHECK(status IN ('FEITO', 
+                CONSTRAINT status_envios CHECK(status IN ('FEITO', 
                                                           'ENVIADO',
                                                           'EM TRANSITO',
                                                           'ENTREGUE'))
@@ -136,7 +136,7 @@ CREATE TABLE lojas.pedidos (
                 status     VARCHAR(15) NOT NULL,
                 loja_id    NUMERIC(38) NOT NULL,
                 CONSTRAINT pedido_id PRIMARY KEY (pedido_id),
-                CONSTRAINT status_lojas.pedidos CHECK (status IN ('CANCELADO', 
+                CONSTRAINT status_pedidos CHECK (status IN ('CANCELADO', 
                                                             'COMPLETO',
                                                             'ABERTO',
                                                             'PAGO',
